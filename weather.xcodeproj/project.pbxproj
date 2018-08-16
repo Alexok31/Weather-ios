@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		42271E23211CA52100AEF681 /* Forecast10dayStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42271E22211CA52100AEF681 /* Forecast10dayStructure.swift */; };
 		42271E25211CA74A00AEF681 /* Forecast10dayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42271E24211CA74A00AEF681 /* Forecast10dayCell.swift */; };
-		42A76CD7211DBD5200E07FEA /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A76CD6211DBD5200E07FEA /* SearchResultsController.swift */; };
+		42A76CD7211DBD5200E07FEA /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A76CD6211DBD5200E07FEA /* SearchResults.swift */; };
 		42A76CD9211DD6DD00E07FEA /* WeatherHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A76CD8211DD6DD00E07FEA /* WeatherHelper.swift */; };
 		42A76CDB211DD78A00E07FEA /* Forecast10dayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A76CDA211DD78A00E07FEA /* Forecast10dayService.swift */; };
 		42A76CDE211DD83A00E07FEA /* HourDayCollViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A76CDD211DD83A00E07FEA /* HourDayCollViewService.swift */; };
@@ -34,7 +34,7 @@
 		4031009FF8599F336B1EB93D /* Pods-weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weather/Pods-weather.debug.xcconfig"; sourceTree = "<group>"; };
 		42271E22211CA52100AEF681 /* Forecast10dayStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast10dayStructure.swift; sourceTree = "<group>"; };
 		42271E24211CA74A00AEF681 /* Forecast10dayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast10dayCell.swift; sourceTree = "<group>"; };
-		42A76CD6211DBD5200E07FEA /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
+		42A76CD6211DBD5200E07FEA /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		42A76CD8211DD6DD00E07FEA /* WeatherHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHelper.swift; sourceTree = "<group>"; };
 		42A76CDA211DD78A00E07FEA /* Forecast10dayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast10dayService.swift; sourceTree = "<group>"; };
 		42A76CDD211DD83A00E07FEA /* HourDayCollViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourDayCollViewService.swift; sourceTree = "<group>"; };
@@ -91,10 +91,18 @@
 		42A76CE1211EF05E00E07FEA /* GoogleService */ = {
 			isa = PBXGroup;
 			children = (
-				42A76CD6211DBD5200E07FEA /* SearchResultsController.swift */,
 				42A76CDF211EF03E00E07FEA /* GoogleHelper.swift */,
+				42A76CD6211DBD5200E07FEA /* SearchResults.swift */,
 			);
 			path = GoogleService;
+			sourceTree = "<group>";
+		};
+		42D830A42125848E00E7CD4B /* LocationHelper */ = {
+			isa = PBXGroup;
+			children = (
+				42EFDCC52107635A000E9D86 /* LocationHelper.swift */,
+			);
+			path = LocationHelper;
 			sourceTree = "<group>";
 		};
 		42EFDC94210611CB000E9D86 = {
@@ -119,15 +127,15 @@
 			isa = PBXGroup;
 			children = (
 				42EFDCA0210611CB000E9D86 /* AppDelegate.swift */,
-				42EFDCC52107635A000E9D86 /* LocationHelper.swift */,
 				42EFDCBA21061CCD000E9D86 /* Controllers */,
 				42EFDCB921061CB5000E9D86 /* JsonHelper */,
-				42EFDCCE21092C6D000E9D86 /* ImageHelper */,
-				42EFDCBB21061CDF000E9D86 /* CoreData */,
+				42D830A42125848E00E7CD4B /* LocationHelper */,
 				42A76CE1211EF05E00E07FEA /* GoogleService */,
 				42A76CDC211DD7F100E07FEA /* WeatherService */,
 				42EFDCC021064458000E9D86 /* DataStructure */,
 				42EFDCC921077AD5000E9D86 /* Cell */,
+				42EFDCBB21061CDF000E9D86 /* CoreData */,
+				42EFDCCE21092C6D000E9D86 /* ImageHelper */,
 				42EFDCA4210611CB000E9D86 /* Main.storyboard */,
 				42EFDCAA210611CD000E9D86 /* Assets.xcassets */,
 				42EFDCAC210611CD000E9D86 /* LaunchScreen.storyboard */,
@@ -325,7 +333,7 @@
 				42271E25211CA74A00AEF681 /* Forecast10dayCell.swift in Sources */,
 				42EFDCC2210644BF000E9D86 /* HourDayStructure.swift in Sources */,
 				42EFDCA3210611CB000E9D86 /* CurrentWeatherViewController.swift in Sources */,
-				42A76CD7211DBD5200E07FEA /* SearchResultsController.swift in Sources */,
+				42A76CD7211DBD5200E07FEA /* SearchResults.swift in Sources */,
 				42271E23211CA52100AEF681 /* Forecast10dayStructure.swift in Sources */,
 				42EFDCCD21092C26000E9D86 /* Download&CacheImeg.swift in Sources */,
 				42EFDCA1210611CB000E9D86 /* AppDelegate.swift in Sources */,

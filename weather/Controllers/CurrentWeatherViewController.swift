@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  weather
 //
-//  Created by Александр Харченко on 23.07.2018.
+//Users/aleksandrharcenko/Desktop/weather/weather/Controllers//  Created by Александр Харченко on 23.07.2018.
 //  Copyright © 2018 Александр Харченко. All rights reserved.
 //
 
@@ -112,14 +112,6 @@ class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate 
                     })
                 })
             })
-    }
-    
-    func cityOnTheMapView(lat: CLLocationDegrees, lon: CLLocationDegrees){
-        // approximation of annotation
-        let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake((lat), (lon))
-        let span = MKCoordinateSpanMake(0.15, 0.15)
-        let region = MKCoordinateRegionMake(coordinate, span)
-        self.mapView.setRegion(region, animated: true)
     }
 }
 

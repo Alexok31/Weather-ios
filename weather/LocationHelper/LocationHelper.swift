@@ -32,5 +32,13 @@ class LocationHelper {
             
         })
     }
+    
+    func cityOnTheMapView(lat: CLLocationDegrees, lon: CLLocationDegrees, completion: @escaping ((MKCoordinateRegion) -> ())) {
+        // approximation of annotation
+        let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake((lat), (lon))
+        let span = MKCoordinateSpanMake(0.15, 0.15)
+        let region = MKCoordinateRegionMake(coordinate, span)
+        completion(region)
+    }
 }
 

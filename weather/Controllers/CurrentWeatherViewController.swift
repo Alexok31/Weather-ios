@@ -9,30 +9,25 @@
 import UIKit
 import MapKit
 
-
 class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate {
    
     @IBAction func refreshButton(_ sender: Any) {
         self.locationMeneger.startUpdatingLocation()
+        
     }
   
     @IBAction func searchCityButton(_ sender: Any) {
-        var resultsViewController = GoogleHelper().resultsViewController
-        resultsViewController = GoogleHelper().autocompleteResultsViewController
-        resultsViewController?.delegate = self
+        let resultsViewController = GoogleHelper().autocompleteResultsViewController
+        resultsViewController.delegate = self
         resultSearchController = UISearchController(searchResultsController: resultsViewController)
         resultSearchController?.searchResultsUpdater = resultsViewController
         resultSearchController?.searchBar.sizeToFit()
         definesPresentationContext = true
-        let searchController = resultSearchController?.searchBar
-        searchController?.placeholder =  "Enter city"
-        searchController?.tintColor = .blue
-        searchController?.backgroundColor = UIColor.clear
-        resultsViewController?.tintColor = UIColor.blue
-        resultsViewController?.tableCellBackgroundColor = UIColor.cyan
-        resultsViewController?.tableCellSeparatorColor = UIColor.clear
+        SearchControllerHelper().searchView(resultSearchController!, resultsViewController: resultsViewController)
+        SearchControllerHelper().filter(resultsViewController)
         present(resultSearchController!, animated: true, completion: nil)
     }
+   
     
     @IBOutlet weak var hourDayCollectionView: UICollectionView!
     @IBOutlet weak var forecast10dayTableView: UITableView!
@@ -49,6 +44,7 @@ class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate 
     @IBOutlet weak var temperatureRange: UILabel!
     @IBOutlet weak var presentDay: UILabel!
     @IBOutlet weak var fctTextMetric: UILabel!
+    @IBOutlet weak var dayOfWeekUpConstraint: NSLayoutConstraint!
     
     let locationMeneger = CLLocationManager()
     var geocoder: CLGeocoder!
@@ -65,15 +61,27 @@ class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate 
         forecast10dayTableView.layer.cornerRadius = 15
         scrollView.layer.cornerRadius = 30
         navigationItem.titleView = currentWeatherImage
-        self.locationMeneger.delegate = self
-        self.locationMeneger.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationMeneger.requestWhenInUseAuthorization()
-        self.locationMeneger.startUpdatingLocation()
+        locationMeneger.delegate = self
+        locationMeneger.desiredAccuracy = kCLLocationAccuracyBest
+        locationMeneger.requestWhenInUseAuthorization()
+        locationMeneger.startUpdatingLocation()
         mapView.layer.cornerRadius = mapView.frame.height / 2
+        photoImageView.layer.cornerRadius = 12
+        fctTextMetric.layer.cornerRadius = 12
+        setupNavigationBar()
+
     }
     
+    func setupNavigationBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
+        navigationController?.navigationBar.tintColor = UIColor.white
+    }
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         LocationHelper().locationManager(manager, didUpdateLocations: locations) { (region, city, country) in
             self.mapView.setRegion(region, animated: true)
             self.mapView.showsUserLocation = true
@@ -85,7 +93,6 @@ class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate 
     }
     
     func weatherData(lat: CLLocationDegrees, lon: CLLocationDegrees) {
-       
             GetJsonData().getCurrentWeather(lat: lat, lon: lon, completion: { (currentWeatherData) in
                 GetJsonData().get10DayForcast(lat: lat, lon: lon, completion: { (forecast10Day) in
                     GetJsonData().getHourDayData(lat: lat, lon: lon, completion: { (hourDayData) in
@@ -97,8 +104,8 @@ class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate 
                         DispatchQueue.main.async {
                             self.fctTextMetric.text = fcttext_metric
                             self.presentDay.text = "Сегодня \(String(describing: presentDay!))"
-                            self.temperatureRange.text = "\(String(describing: highTemp!))°   \(String(describing: lowTemp!))°"
-                            self.relative_humidity.text = "\(currentWeatherData.current_observation.relative_humidity)%"
+                            self.temperatureRange.text = "\(String(describing: highTemp!))°  \(String(describing: lowTemp!))°"
+                            self.relative_humidity.text = "\(currentWeatherData.current_observation.relative_humidity)"
                             self.feelsLike_c.text = "\(currentWeatherData.current_observation.feelslike_c)°"
                             self.wind_kph.text = "\(currentWeatherData.current_observation.wind_kph)км/ч"
                             self.weatherLabel.text = currentWeatherData.current_observation.weather

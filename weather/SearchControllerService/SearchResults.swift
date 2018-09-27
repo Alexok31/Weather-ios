@@ -29,7 +29,6 @@ extension CurrentWeatherViewController: GMSAutocompleteResultsViewControllerDele
                 }
             })
         }
-    
         self.dismiss(animated: true, completion: nil)
     }
     

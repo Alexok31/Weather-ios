@@ -12,7 +12,6 @@ extension CurrentWeatherViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return hourDayArray.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -21,9 +20,6 @@ extension CurrentWeatherViewController: UICollectionViewDelegate, UICollectionVi
         cell.timeLabel.text = "\((hourDayArray[indexPath.row]?.FCTTIME.hour_padded)!)"
         cell.imageWeather.downloadImeg(from: (hourDayArray[indexPath.row]?.icon_url)!)
         cell.blur.layer.cornerRadius = 15
-        
         return cell
     }
-    
-    
 }

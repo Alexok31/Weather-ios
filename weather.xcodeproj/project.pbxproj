@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		42271E23211CA52100AEF681 /* Forecast10dayStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42271E22211CA52100AEF681 /* Forecast10dayStructure.swift */; };
 		42271E25211CA74A00AEF681 /* Forecast10dayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42271E24211CA74A00AEF681 /* Forecast10dayCell.swift */; };
+		425080FD2146823D0040ACE4 /* SearchControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425080FC2146823D0040ACE4 /* SearchControllerHelper.swift */; };
 		42A76CD7211DBD5200E07FEA /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A76CD6211DBD5200E07FEA /* SearchResults.swift */; };
 		42A76CD9211DD6DD00E07FEA /* WeatherHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A76CD8211DD6DD00E07FEA /* WeatherHelper.swift */; };
 		42A76CDB211DD78A00E07FEA /* Forecast10dayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A76CDA211DD78A00E07FEA /* Forecast10dayService.swift */; };
@@ -34,6 +35,7 @@
 		4031009FF8599F336B1EB93D /* Pods-weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weather/Pods-weather.debug.xcconfig"; sourceTree = "<group>"; };
 		42271E22211CA52100AEF681 /* Forecast10dayStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast10dayStructure.swift; sourceTree = "<group>"; };
 		42271E24211CA74A00AEF681 /* Forecast10dayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast10dayCell.swift; sourceTree = "<group>"; };
+		425080FC2146823D0040ACE4 /* SearchControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchControllerHelper.swift; sourceTree = "<group>"; };
 		42A76CD6211DBD5200E07FEA /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		42A76CD8211DD6DD00E07FEA /* WeatherHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHelper.swift; sourceTree = "<group>"; };
 		42A76CDA211DD78A00E07FEA /* Forecast10dayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast10dayService.swift; sourceTree = "<group>"; };
@@ -78,6 +80,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		425080FE2146839C0040ACE4 /* SearchControllerService */ = {
+			isa = PBXGroup;
+			children = (
+				42A76CD6211DBD5200E07FEA /* SearchResults.swift */,
+				425080FC2146823D0040ACE4 /* SearchControllerHelper.swift */,
+			);
+			path = SearchControllerService;
+			sourceTree = "<group>";
+		};
 		42A76CDC211DD7F100E07FEA /* WeatherService */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				42A76CDF211EF03E00E07FEA /* GoogleHelper.swift */,
-				42A76CD6211DBD5200E07FEA /* SearchResults.swift */,
 			);
 			path = GoogleService;
 			sourceTree = "<group>";
@@ -128,10 +138,11 @@
 			children = (
 				42EFDCA0210611CB000E9D86 /* AppDelegate.swift */,
 				42EFDCBA21061CCD000E9D86 /* Controllers */,
-				42EFDCB921061CB5000E9D86 /* JsonHelper */,
-				42D830A42125848E00E7CD4B /* LocationHelper */,
+				425080FE2146839C0040ACE4 /* SearchControllerService */,
 				42A76CE1211EF05E00E07FEA /* GoogleService */,
 				42A76CDC211DD7F100E07FEA /* WeatherService */,
+				42EFDCB921061CB5000E9D86 /* JsonHelper */,
+				42D830A42125848E00E7CD4B /* LocationHelper */,
 				42EFDCC021064458000E9D86 /* DataStructure */,
 				42EFDCC921077AD5000E9D86 /* Cell */,
 				42EFDCBB21061CDF000E9D86 /* CoreData */,
@@ -322,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42A76CE0211EF03E00E07FEA /* GoogleHelper.swift in Sources */,
+				425080FD2146823D0040ACE4 /* SearchControllerHelper.swift in Sources */,
 				42A76CDE211DD83A00E07FEA /* HourDayCollViewService.swift in Sources */,
 				42EFDCB821061CA7000E9D86 /* GetJsonData.swift in Sources */,
 				42EFDCCB21091D15000E9D86 /* CurrentTempStructure.swift in Sources */,

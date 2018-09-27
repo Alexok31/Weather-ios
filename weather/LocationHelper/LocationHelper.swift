@@ -40,5 +40,7 @@ class LocationHelper {
         let region = MKCoordinateRegionMake(coordinate, span)
         completion(region)
     }
+    
+    
 }
 

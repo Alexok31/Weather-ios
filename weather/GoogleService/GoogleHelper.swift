@@ -14,7 +14,7 @@ class GoogleHelper {
     var resultsViewController: GMSAutocompleteResultsViewController?
     var autocompleteResultsViewController = GMSAutocompleteResultsViewController()
     let filter = GMSAutocompleteFilter()
-    
+    var placesClient = GMSPlacesClient()
     
     func loadFirstPhotoForPlace(placeID: String, completion: @escaping ((UIImage) -> ())) {
         GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
@@ -37,4 +37,5 @@ class GoogleHelper {
             }
         }
     }
+   
 }

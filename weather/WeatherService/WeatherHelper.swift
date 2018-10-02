@@ -9,6 +9,13 @@
 import Foundation
 import GooglePlaces
 
-protocol RecieveData {
-    func canRecieve(lat: CLLocationDegrees, lon: CLLocationDegrees)
+protocol CanRecieveFavoriteCity {
+    func receiveData(nameCity: String, lat: Double, lon: Double)
+}
+
+
+extension CurrentWeatherViewController : UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
 }

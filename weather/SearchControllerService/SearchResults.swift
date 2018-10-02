@@ -14,12 +14,11 @@ extension CurrentWeatherViewController: GMSAutocompleteResultsViewControllerDele
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                            didAutocompleteWith place: GMSPlace) {
-       
         resultSearchController?.isActive = false
-        let latitude = place.coordinate.latitude
-        let longitude = place.coordinate.longitude
-        weatherData(lat: latitude, lon: longitude)
-        LocationHelper().cityOnTheMapView(lat: latitude, lon: longitude) { (region) in
+        latitude = place.coordinate.latitude
+        longitude = place.coordinate.longitude
+        weatherData(lat: latitude!, lon: longitude!)
+        LocationHelper().cityOnTheMapView(lat: latitude!, lon: longitude!) { (region) in
             GoogleHelper().loadFirstPhotoForPlace(placeID: place.placeID, completion: { (photo) in
                 
                 DispatchQueue.main.async {

@@ -9,13 +9,32 @@
 import UIKit
 import MapKit
 
-class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate {
+class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate, CanRecieveFavoriteCity {
    
+    func receiveData(nameCity: String, lat: Double, lon: Double) {
+        cityLabel.text = nameCity
+        weatherData(lat: lat, lon: lon)
+    }
+    
+    
     @IBAction func refreshButton(_ sender: Any) {
         self.locationMeneger.startUpdatingLocation()
-        
     }
-  
+    
+    @IBAction func showFavoriteCity(_ sender: Any) {
+
+    }
+    
+    @IBAction func addCityToFavorite(_ sender: Any) {
+        let currentLat = locationMeneger.location?.coordinate.latitude
+        let currentLon = locationMeneger.location?.coordinate.longitude
+        if currentLat != nil {
+            latitude = currentLat
+            longitude = currentLon
+            
+        }
+        saveCity.addCityToFavorite(nameCity: cityLabel.text!, lat: latitude!, lon: longitude!)
+    }
     @IBAction func searchCityButton(_ sender: Any) {
         let resultsViewController = GoogleHelper().autocompleteResultsViewController
         resultsViewController.delegate = self
@@ -44,13 +63,16 @@ class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate 
     @IBOutlet weak var temperatureRange: UILabel!
     @IBOutlet weak var presentDay: UILabel!
     @IBOutlet weak var fctTextMetric: UILabel!
-    @IBOutlet weak var dayOfWeekUpConstraint: NSLayoutConstraint!
+    
     
     let locationMeneger = CLLocationManager()
     var geocoder: CLGeocoder!
     var placemark: CLPlacemark!
     var resultSearchController: UISearchController?
     var resultView: UITextView?
+    let saveCity = SaveCity(persistentManager: PersistentManager.shared)
+    var latitude : Double?
+    var longitude : Double?
     
     var hourDayArray = [Hourly_forecastSructure?]()
     var forecast10day = [ForecastdayStructure?]()
@@ -59,7 +81,6 @@ class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate 
         super.viewDidLoad()
         hourDayCollectionView.layer.cornerRadius = 10
         forecast10dayTableView.layer.cornerRadius = 15
-        scrollView.layer.cornerRadius = 30
         navigationItem.titleView = currentWeatherImage
         locationMeneger.delegate = self
         locationMeneger.desiredAccuracy = kCLLocationAccuracyBest
@@ -69,7 +90,14 @@ class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate 
         photoImageView.layer.cornerRadius = 12
         fctTextMetric.layer.cornerRadius = 12
         setupNavigationBar()
-
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let popoverView = segue.destination
+        popoverView.view.backgroundColor = UIColor.clear
+        popoverView.popoverPresentationController?.delegate = self
+        let destinationVc = segue.destination as! FavoriteCityController
+        destinationVc.delegate = self
     }
     
     func setupNavigationBar() {
@@ -92,7 +120,7 @@ class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate 
         }
     }
     
-    func weatherData(lat: CLLocationDegrees, lon: CLLocationDegrees) {
+    func weatherData(lat: CLLocationDegrees, lon: CLLocationDegrees){
             GetJsonData().getCurrentWeather(lat: lat, lon: lon, completion: { (currentWeatherData) in
                 GetJsonData().get10DayForcast(lat: lat, lon: lon, completion: { (forecast10Day) in
                     GetJsonData().getHourDayData(lat: lat, lon: lon, completion: { (hourDayData) in
@@ -103,7 +131,7 @@ class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate 
                         
                         DispatchQueue.main.async {
                             self.fctTextMetric.text = fcttext_metric
-                            self.presentDay.text = "Сегодня \(String(describing: presentDay!))"
+                            self.presentDay.text = "\(String(describing: presentDay!))"
                             self.temperatureRange.text = "\(String(describing: highTemp!))°  \(String(describing: lowTemp!))°"
                             self.relative_humidity.text = "\(currentWeatherData.current_observation.relative_humidity)"
                             self.feelsLike_c.text = "\(currentWeatherData.current_observation.feelslike_c)°"
@@ -121,8 +149,3 @@ class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate 
             })
     }
 }
-
-
-
-
-

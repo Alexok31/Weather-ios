@@ -13,10 +13,13 @@ let imageCache = NSCache<AnyObject, AnyObject>()
 
 extension UIImageView {
     func downloadImeg (from url: String) {
-        self.image = nil
-        
+        DispatchQueue.main.async {
+            self.image = nil
+        }
         if let cachedImeg = imageCache.object(forKey: url as AnyObject) as? UIImage {
-            self.image = cachedImeg
+            DispatchQueue.main.async {
+                self.image = cachedImeg
+            }
             return
         }
         let urlRequest = URLRequest (url: URL(string: url)!)

@@ -31,5 +31,4 @@ class SaveCity {
         guard let favoriteCitys = try! persistentManager.context.fetch(FavoriteCity.fetchRequest()) as? [FavoriteCity] else {return}
         completion(favoriteCitys)
     }
-    
 }

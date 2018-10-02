@@ -26,16 +26,23 @@ class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     @IBAction func addCityToFavorite(_ sender: Any) {
-        let currentLat = locationMeneger.location?.coordinate.latitude
-        let currentLon = locationMeneger.location?.coordinate.longitude
-        if currentLat != nil {
+     
+        if latitude == nil {
+            let currentLat = locationMeneger.location?.coordinate.latitude
+            let currentLon = locationMeneger.location?.coordinate.longitude
             latitude = currentLat
             longitude = currentLon
-            
+            saveCity.addCityToFavorite(nameCity: cityLabel.text!, lat: latitude!, lon: longitude!)
+            latitude = nil
+        }else {
+            saveCity.addCityToFavorite(nameCity: cityLabel.text!, lat: latitude!, lon: longitude!)
+            latitude = nil
         }
-        saveCity.addCityToFavorite(nameCity: cityLabel.text!, lat: latitude!, lon: longitude!)
+        
     }
     @IBAction func searchCityButton(_ sender: Any) {
+        latitude = nil
+        longitude = nil
         let resultsViewController = GoogleHelper().autocompleteResultsViewController
         resultsViewController.delegate = self
         resultSearchController = UISearchController(searchResultsController: resultsViewController)

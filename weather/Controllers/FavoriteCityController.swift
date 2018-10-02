@@ -11,6 +11,7 @@ import UIKit
 class FavoriteCityController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var cityTableView: UITableView!
+    
     let saveCity = SaveCity(persistentManager: PersistentManager.shared)
     var favoriteCitys = [FavoriteCity?]()
     var delegate : CanRecieveFavoriteCity?
@@ -18,10 +19,14 @@ class FavoriteCityController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       fillArrayFaviriteCitys()
+
+    }
+    
+    func fillArrayFaviriteCitys() {
         saveCity.fetchCity { (city) in
             self.favoriteCitys = city
         }
-
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,7 +45,9 @@ class FavoriteCityController: UIViewController, UITableViewDelegate, UITableView
                 cell.tempCity.text = "\(Int(curentWeatherData.current_observation.temp_c))°"
             }
         }
-        cell.nameCity.text = nameCity
+        DispatchQueue.main.async {
+            cell.nameCity.text = nameCity   
+        }
         return cell
     }
     
@@ -71,9 +78,7 @@ class FavoriteCityController: UIViewController, UITableViewDelegate, UITableView
                 print("error")
             }
             tableView.reloadData()
-            
         }
-        
     }
     override var preferredContentSize: CGSize {
         get {

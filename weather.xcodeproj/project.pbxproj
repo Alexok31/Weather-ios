@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		421E5F082180C5F7005B277E /* weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 421E5F062180C5F7005B277E /* weather.xcdatamodeld */; };
 		42271E23211CA52100AEF681 /* Forecast10dayStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42271E22211CA52100AEF681 /* Forecast10dayStructure.swift */; };
 		42271E25211CA74A00AEF681 /* Forecast10dayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42271E24211CA74A00AEF681 /* Forecast10dayCell.swift */; };
-		4246C02C216240D80004CE96 /* weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4246C02A216240D80004CE96 /* weather.xcdatamodeld */; };
 		4246C04D21624C700004CE96 /* FavoriteCity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246C04B21624C700004CE96 /* FavoriteCity+CoreDataClass.swift */; };
 		4246C04E21624C700004CE96 /* FavoriteCity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246C04C21624C700004CE96 /* FavoriteCity+CoreDataProperties.swift */; };
 		4246C050216251E60004CE96 /* SaveCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246C04F216251E60004CE96 /* SaveCity.swift */; };
@@ -38,9 +38,9 @@
 
 /* Begin PBXFileReference section */
 		4031009FF8599F336B1EB93D /* Pods-weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weather/Pods-weather.debug.xcconfig"; sourceTree = "<group>"; };
+		421E5F072180C5F7005B277E /* weather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = weather.xcdatamodel; sourceTree = "<group>"; };
 		42271E22211CA52100AEF681 /* Forecast10dayStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast10dayStructure.swift; sourceTree = "<group>"; };
 		42271E24211CA74A00AEF681 /* Forecast10dayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast10dayCell.swift; sourceTree = "<group>"; };
-		4246C02B216240D80004CE96 /* weather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = weather.xcdatamodel; sourceTree = "<group>"; };
 		4246C04B21624C700004CE96 /* FavoriteCity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteCity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4246C04C21624C700004CE96 /* FavoriteCity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteCity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4246C04F216251E60004CE96 /* SaveCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCity.swift; sourceTree = "<group>"; };
@@ -160,8 +160,8 @@
 				42EFDCA4210611CB000E9D86 /* Main.storyboard */,
 				42EFDCAA210611CD000E9D86 /* Assets.xcassets */,
 				42EFDCAC210611CD000E9D86 /* LaunchScreen.storyboard */,
+				421E5F062180C5F7005B277E /* weather.xcdatamodeld */,
 				42EFDCAF210611CD000E9D86 /* Info.plist */,
-				4246C02A216240D80004CE96 /* weather.xcdatamodeld */,
 			);
 			path = weather;
 			sourceTree = "<group>";
@@ -355,11 +355,11 @@
 				42EFDCB821061CA7000E9D86 /* GetJsonData.swift in Sources */,
 				42EFDCCB21091D15000E9D86 /* CurrentTempStructure.swift in Sources */,
 				42EFDCB6210611EC000E9D86 /* PersistentManager.swift in Sources */,
-				4246C02C216240D80004CE96 /* weather.xcdatamodeld in Sources */,
 				42EFDCC821077AC6000E9D86 /* HourDayCell.swift in Sources */,
 				42A76CD9211DD6DD00E07FEA /* WeatherHelper.swift in Sources */,
 				42A76CDB211DD78A00E07FEA /* Forecast10dayService.swift in Sources */,
 				42271E25211CA74A00AEF681 /* Forecast10dayCell.swift in Sources */,
+				421E5F082180C5F7005B277E /* weather.xcdatamodeld in Sources */,
 				4246C04D21624C700004CE96 /* FavoriteCity+CoreDataClass.swift in Sources */,
 				4246C0542162E7E40004CE96 /* FavoriteCityCell.swift in Sources */,
 				42EFDCC2210644BF000E9D86 /* HourDayStructure.swift in Sources */,
@@ -573,14 +573,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		4246C02A216240D80004CE96 /* weather.xcdatamodeld */ = {
+		421E5F062180C5F7005B277E /* weather.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				4246C02B216240D80004CE96 /* weather.xcdatamodel */,
+				421E5F072180C5F7005B277E /* weather.xcdatamodel */,
 			);
-			currentVersion = 4246C02B216240D80004CE96 /* weather.xcdatamodel */;
+			currentVersion = 421E5F072180C5F7005B277E /* weather.xcdatamodel */;
 			name = weather.xcdatamodeld;
-			path = "../../../../Downloads/Weather-ios-master/weather/weather.xcdatamodeld";
+			path = ../../../weather/weather/weather.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
